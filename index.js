@@ -249,13 +249,16 @@ If correct, the function should return ["Salvador Dali", "Frida Kahlo"]*/
 
  function get20s(array) {
   let get20sArtists = []
-  // let splitYears = array.years.split(' ')
-//   for (let i = 0; i <array.length; i++) {
-//     if (array[i].splitYears[i] > 1899 && array[i].splitYears[i] <2001) {
-//     get20sArtists.push(array[i].name)
-//   }
-// }
-// return get20sArtists
+  for (let i = 0; i <array.length; i++) {
+    const str = array[i].years;
+    const dates = str.split(' - ');
+    let birth = parseInt(dates[0]);
+    let death = parseInt(dates[1]);
+    if (birth > 1899 && death <2001) {
+    get20sArtists.push(array[i].name)
+  }
+}
+return get20sArtists
 }
 console.log('task 4:', get20s(artists))
 
@@ -277,7 +280,7 @@ function removeArtist(array, index) {
   return array.length
 }
 
-console.log('task 5:', removeArtist(artists, 0))
+// console.log('task 5:', removeArtist(artists, 0))
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use addArtist to do the following: 
@@ -310,14 +313,27 @@ Use lotsOfArt to do the following:
 
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ... "Albrecht Dürer"]*/
 
+// function lotsOfArt(array) {
+//   let paintArtists = [];
+//   for (let i = 0; i < array.length; i++) {
+//     console.log(array[i])
+//     if (array[i].paintings > 100); {
+//       paintArtists.push(array[i].name)
+//     } 
+   
+//   }
+//   return paintArtists
+// }
 function lotsOfArt(array) {
   let paintArtists = [];
   for (let i = 0; i < array.length; i++) {
-    console.log(array[i])
-    if (array[i].paintings > 100); {
+    // console.log(array[i])
+    if (array[i].paintings > 100) {
+	    // console.log(`${array[i].paintings} greater than 100, add to array`);
       paintArtists.push(array[i].name)
-    } 
-   
+    } else {
+    //  console.log(`${array[i].paintings} less than 100, don't add to array`);
+    }
   }
   return paintArtists
 }
@@ -333,7 +349,7 @@ function lotsOfArt(array) {
 //   return paintArtists
 // }
 
-// console.log('task 7:', lotsOfArt(artists))
+ console.log('task 7:', lotsOfArt(artists))
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 8: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use artistInfo to do the following: 
